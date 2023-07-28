@@ -11,6 +11,8 @@ import NoneAuth from '../layouts/noneAuth'
 import { useForm } from 'react-hook-form'
 import { useState } from 'react'
 
+import { motion } from "framer-motion"
+
 const sizeOffset = 80
 
 const formCard = {
@@ -60,7 +62,17 @@ const Home = () => {
 
   const HomeHTML = (<>
     <NoneAuth>
-      <Box sx={{...full.w, height: {xs: '100%', md: '500px'}}}>
+      <Box
+        component={motion.div}
+        sx={{...full.w, height: {xs: '100%', md: '500px'}}}
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{
+          duration: 0.8,
+          delay: 0.5,
+          ease: [0, 0.71, 0.2, 1.01]
+        }}
+      >
         <Grid container sx={{...full.ph, ...formContainerCard}}>
 
           <Grid item xs={12} md={6} sx={{height: {xs: '40%', md: '100%'}, ...bgConstellation, paddingRight: {xs: 0, md: sizeOffset+'px'}, paddingBottom: {xs: sizeOffset+'px', md: 0}}}>
@@ -82,8 +94,9 @@ const Home = () => {
                     <TextField required id="user" label="Usuario" variant="outlined" sx={{...full.w, mb: 2}} {...register("user")}/>
 
                     <FormControl sx={{...full.w, mb: 2}} variant="outlined">
-                      <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                      <InputLabel htmlFor="outlined-adornment-password">Contraseña</InputLabel>
                       <OutlinedInput
+                        required
                         id="outlined-adornment-password"
                         type={showPassword ? 'text' : 'password'}
                         {...register("password")}
@@ -99,7 +112,7 @@ const Home = () => {
                             </IconButton>
                           </InputAdornment>
                         }
-                        label="Password"
+                        label="Contraseña"
                       />
                     </FormControl>
 
