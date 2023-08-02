@@ -15,7 +15,6 @@ import '@fontsource/pacifico/400.css'
 
 import '../styles/globals.css'
 
-
 const App = ({ Component, pageProps }) => {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
 
