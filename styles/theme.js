@@ -1,4 +1,5 @@
 export const maq = {border: '1px red solid'}
+export const pointer = {cursor: 'pointer'}
 
 export const full = {
   w: {width: '100%'},

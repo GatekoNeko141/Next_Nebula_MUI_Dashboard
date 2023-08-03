@@ -54,13 +54,13 @@ const SideBar = ({dark}) => {
                 <Typography
                   variant="subtitle2"
                   key={navItem.title}
-                  sx={{opacity: .82, mt: 1}}
+                  sx={{mt: 1}}
                 >
                   {navItem.title}
                 </Typography>:
                 <ItemNavBar
                   key={navItem.title}
-                  navOptions={navItem.title}
+                  navOptions={navItem}
                 >
                   {navItem.title}
                 </ItemNavBar>
