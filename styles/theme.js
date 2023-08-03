@@ -5,3 +5,9 @@ export const full = {
   ph: {height: '100%'},
   vh: {height: '100vh'}
 }
+
+export const rowFlex = {
+  display: 'flex',
+  flexDirection: 'column',
+  overflow: 'hidden'
+}
