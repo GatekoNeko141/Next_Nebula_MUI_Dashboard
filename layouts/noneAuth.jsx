@@ -3,16 +3,9 @@ import { full } from '../styles/theme'
 
 import bg1 from '../public/bgLogin/bg1.svg'
 
-const bgLogin = {
-  backgroundImage: `url(${bg1.src})`,
-  backgroundSize: 'cover',
-  backgroundPosition: 'center',
-  backgroundRepeat: 'no-repeat'
-}
-
 const NoneAuth = ({children}) => {
   const NoneAuthHTML = (<>
-    <Box sx={{...full.w, ...full.vh, ...bgLogin}}>
+    <Box sx={st.bgLogin}>
       <Container maxWidth="md" sx={{...full.ph, p: 0}}>
         <Grid container sx={{...full.w, ...full.ph}}>
           <Grid item xs={12}>
@@ -26,6 +19,17 @@ const NoneAuth = ({children}) => {
   </>)
   
   return NoneAuthHTML
+}
+
+const st = {
+  bgLogin: {
+    ...full.w,
+    ...full.vh,
+    backgroundImage: `url(${bg1.src})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  }
 }
 
 export default NoneAuth

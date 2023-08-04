@@ -8,41 +8,9 @@ import { sideNavBar } from "../../constants/sideNavBar"
 import ItemNavBar from "./ItemNavBar"
 
 const SideBar = ({dark}) => {
-  const st = {
-    mainBox: {
-      ...full.ph,
-      width: {xs: '100%', sm: 250},
-      p: .5
-    },
-    innerBox: {
-      ...full.ph,
-      ...full.w,
-      backgroundColor: ( dark ? purple[900] : purple[300] ),
-      borderRadius: 3,
-      ...rowFlex
-    },
-    headerBox: {
-      width: '100%',
-      py: 3,
-    },
-    mainLogo: {
-      ...full.w,
-      height: '80px',
-      backgroundImage: `url(${profile.src})`,
-      backgroundSize: 'contain',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat'
-    },
-    navContainer:{
-      ...full.ph,
-      overflowX: 'hidden',
-      px: 1
-    }
-  }
-
   const SideBarHTML = (<>
     <Box sx={st.mainBox}>
-      <Box sx={st.innerBox}>
+      <Box sx={st.innerBox(dark)}>
         <Box sx={st.headerBox}>
           <Box sx={st.mainLogo}></Box>
         </Box>
@@ -73,6 +41,38 @@ const SideBar = ({dark}) => {
   </>)
   
   return SideBarHTML
+}
+
+const st = {
+  mainBox: {
+    ...full.ph,
+    width: {xs: '100%', sm: 250},
+    p: .5
+  },
+  innerBox: dark => ({
+    ...full.ph,
+    ...full.w,
+    backgroundColor: ( dark ? purple[900] : purple[300] ),
+    borderRadius: 3,
+    ...rowFlex
+  }),
+  headerBox: {
+    width: '100%',
+    py: 3,
+  },
+  mainLogo: {
+    ...full.w,
+    height: '80px',
+    backgroundImage: `url(${profile.src})`,
+    backgroundSize: 'contain',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  },
+  navContainer:{
+    ...full.ph,
+    overflowX: 'hidden',
+    px: 1
+  }
 }
 
 export default SideBar

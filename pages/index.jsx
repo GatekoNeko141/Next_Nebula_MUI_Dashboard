@@ -15,37 +15,6 @@ import { motion } from "framer-motion"
 
 const sizeOffset = 80
 
-const formCard = {
-  position: 'relative',
-  width: {xs: '100%', md: `calc(100% + ${sizeOffset}px)`},
-  left: {xs: '0', md: `-${sizeOffset}px`},
-  height: {xs: `calc(100% + ${sizeOffset}px)`, md: '100%'},
-  top: {xs: `-${sizeOffset}px`, md: '0'},
-  borderRadius: `${sizeOffset}px 0 0 0`,
-}
-
-const formContainerCard = {
-  borderRadius: {xs: 0, md: 3},
-  overflow: 'hidden',
-  boxShadow: '0 0 20px 4px rgb(0 0 0 / 30%)'
-}
-
-const bgConstellation = {
-  backgroundImage: `url(${constellation.src})`,
-  backgroundSize: 'auto',
-  backgroundPosition: 'center',
-  backgroundRepeat: 'repeat'
-}
-
-const profileImage = {
-  width: {xs: '130px', md: '100%'},
-  height: {xs: '100%', md: '130px'},
-  backgroundImage: `url(${profile.src})`,
-  backgroundSize: 'contain',
-  backgroundPosition: 'center',
-  backgroundRepeat: 'no-repeat'
-}
-
 const Home = () => {
   const { register, handleSubmit } = useForm()
 
@@ -73,19 +42,19 @@ const Home = () => {
           ease: [0, 0.71, 0.2, 1.01]
         }}
       >
-        <Grid container sx={{...full.ph, ...formContainerCard}}>
+        <Grid container sx={st.formContainerLogin}>
 
-          <Grid item xs={12} md={6} sx={{height: {xs: '40%', md: '100%'}, ...bgConstellation, paddingRight: {xs: 0, md: sizeOffset+'px'}, paddingBottom: {xs: sizeOffset+'px', md: 0}}}>
+          <Grid item xs={12} md={6} sx={st.bgConstellation}>
             <Grid sx={{...full.w, ...full.ph}} container justifyContent="center" alignItems="center">
               <Box sx={{p: 2, width: {xs: 'auto', md: '100%'}, height: {xs: '100%', md: 'auto'}}}>
-                <Box sx={{...profileImage}}></Box>
+                <Box sx={st.profileImage}></Box>
               </Box>
             </Grid>
           </Grid>
 
           <Grid item xs={12} md={6} sx={{height: {xs: '60%', md: '100%'}}}>
-            <Paper elevation={2} sx={{...formCard, paddingLeft: {xs: 0, md: sizeOffset+'px'}}}>
-              <Grid sx={{...full.w, ...full.ph, paddingRight: {xs: 0, md: sizeOffset+'px'}, paddingTop: {xs: sizeOffset+'px', md: 0}}} container justifyContent="center" alignItems={{xs: 'top', md: 'center'}}>
+            <Paper elevation={2} sx={st.formCard}>
+              <Grid sx={st.formLogin} container justifyContent="center" alignItems={{xs: 'top', md: 'center'}}>
                 <Box sx={{...full.w, px: 2}}>
                   <Typography className='pacific' variant="h4" sx={{mb: 4}} textAlign={'center'}>Login</Typography>
 
@@ -131,6 +100,47 @@ const Home = () => {
   </>)
 
   return HomeHTML
+}
+
+const st = {
+  formContainerLogin: {
+    ...full.ph,
+    borderRadius: {xs: 0, md: 3},
+    overflow: 'hidden',
+    boxShadow: '0 0 20px 4px rgb(0 0 0 / 30%)'
+  },
+  formCard: {
+    position: 'relative',
+    paddingLeft: {xs: 0, md: sizeOffset+'px'},
+    width: {xs: '100%', md: `calc(100% + ${sizeOffset}px)`},
+    left: {xs: '0', md: `-${sizeOffset}px`},
+    height: {xs: `calc(100% + ${sizeOffset}px)`, md: '100%'},
+    top: {xs: `-${sizeOffset}px`, md: '0'},
+    borderRadius: `${sizeOffset}px 0 0 0`
+  },
+  formLogin: {
+    ...full.w,
+    ...full.ph,
+    paddingRight: {xs: 0, md: sizeOffset+'px'},
+    paddingTop: {xs: sizeOffset+'px', md: 0}
+  },
+  bgConstellation: {
+    height: {xs: '40%', md: '100%'},
+    backgroundImage: `url(${constellation.src})`,
+    backgroundSize: 'auto',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'repeat',
+    paddingRight: {xs: 0, md: sizeOffset+'px'},
+    paddingBottom: {xs: sizeOffset+'px', md: 0}
+  },
+  profileImage: {
+    width: {xs: '130px', md: '100%'},
+    height: {xs: '100%', md: '130px'},
+    backgroundImage: `url(${profile.src})`,
+    backgroundSize: 'contain',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  }
 }
 
 export default Home
