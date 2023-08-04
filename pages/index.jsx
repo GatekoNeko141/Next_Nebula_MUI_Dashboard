@@ -13,8 +13,6 @@ import { useState } from 'react'
 
 import { motion } from "framer-motion"
 
-const sizeOffset = 80
-
 const Home = () => {
   const { register, handleSubmit } = useForm()
 
@@ -101,6 +99,8 @@ const Home = () => {
 
   return HomeHTML
 }
+
+const sizeOffset = 80
 
 const st = {
   formContainerLogin: {
