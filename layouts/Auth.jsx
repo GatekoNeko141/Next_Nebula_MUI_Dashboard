@@ -1,16 +1,25 @@
 import { SideBar, Header } from '../components'
 import { useMediaQuery, Box } from '@mui/material'
-import { full, maq } from '../styles/theme'
+import { purple } from '@mui/material/colors'
 
-const Auth = ({children}) => {
+import { full, rowFlex } from '../styles/theme'
+import { useEffect } from 'react'
+
+const Auth = ({title, children}) => {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
   const isSmallScreen = useMediaQuery('(max-width: 600px)')
 
+  useEffect(() => {
+    if(typeof document !== 'undefined'){
+      document.title = `Nebula UI - ${title}`
+    }
+  },[true])
+
   const AuthHTML = (<>
     <Box sx={st.dashboardTheme}>
-      { !isSmallScreen && <SideBar dark={prefersDarkMode}/> }
+      { !isSmallScreen && <SideBar dark={prefersDarkMode} color={purple}/> }
       <Box sx={st.dynamicContent}>
-        <Header />
+        <Header dark={prefersDarkMode} color={purple}>{title}</Header>
         <Box sx={st.innerContent}>
           {children}
         </Box>
@@ -28,11 +37,11 @@ const st = {
     ...full.vh
   },
   dynamicContent: {
+    ...rowFlex,
     width: {xs: '100%', sm: 'calc(100% - 250px)'},
-    overflowX: 'hidden'
   },
   innerContent: {
-    ...maq,
+    overflowX: 'hidden'
   }
 }
 
